@@ -1,5 +1,6 @@
 import React, { memo } from 'react'
-import Button, { ButtonType } from './components/Button/button'
+import Button, { ButtonSize, ButtonType } from './components/Button/button'
+import Alert, { AlertType } from './components/Alert/alert copy';
 
 const App = memo(() => {
   return (
@@ -8,12 +9,9 @@ const App = memo(() => {
       <h1>hello world</h1>
       <h2>hello world</h2>
       <h4>hello world</h4>  
-      <Button disabled>hello</Button>
-      <Button btnType={ButtonType.Primary}>hello</Button>
-      <Button btnType={ButtonType.Link} href='http://www.baidu.com' disabled>BaiDu</Button>
-      <code>
-        const a = 'b'
-      </code>
+      <Alert message="温馨提示,你注册成功" type={AlertType.Success} closable />
+      <Alert message="注册成功" description="你在本网站已经注册成功,谢谢您的支持和反馈,多交流真正的技术吧" closable type="success" />
+      
     </div>
   )
 })
