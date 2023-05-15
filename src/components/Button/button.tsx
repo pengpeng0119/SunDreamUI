@@ -1,6 +1,5 @@
 import React, { memo } from 'react'
 import classNames from 'classnames';
-import { type } from 'os';
 export enum ButtonSize{
   large='lg',
   Small='sm'
@@ -16,6 +15,8 @@ export enum ButtonType{
 interface BaseButtonProps{
   className?:string;
   disabled?:boolean;
+  ellipse?:boolean;
+  rounded?:boolean;
   size?:ButtonSize;
   btnType?:ButtonType;
   children:React.ReactNode;
@@ -30,15 +31,19 @@ const Button:React.FC<ButtonProps>=(props)=>{
     btnType,
     className,
     disabled,
+    rounded,
     size,
     children,
     href,
+    ellipse ,
     ...restProps
   }=props
   const classes=classNames('btn',className,{
     [`btn-${btnType}`]:btnType,
     [`btn-${size}`]:size,
-    'disabled':(btnType===ButtonType.Link)&&disabled
+    'disabled':(btnType===ButtonType.Link)&&disabled,
+    'btn-ellipse':ellipse,
+    'btn-rounded':rounded
   })
   if(btnType===ButtonType.Link&&href){
     return (
