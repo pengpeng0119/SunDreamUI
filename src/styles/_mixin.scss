@@ -31,3 +31,8 @@
     pointer-events: none;
   }
 }
+@mixin switch-style(
+  $switch-background: $primary
+){
+  background: $switch-background;
+}

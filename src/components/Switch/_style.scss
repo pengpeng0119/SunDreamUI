@@ -2,7 +2,7 @@
   height: 22px;
   width: 44px;
   border-radius: 100px;
-  background: #1890ff;
+  // background: $primary;
   position: relative;
 
   &::after {
@@ -39,3 +39,18 @@
   opacity: 0.4;
 }
 
+.switch-style-primary{
+  @include switch-style($primary)
+}
+
+.switch-style-danger{
+  @include switch-style($danger)
+}
+
+.switch-style-success{
+  @include switch-style($success)
+}
+
+.switch-style-warning{
+  @include switch-style($warning)
+}

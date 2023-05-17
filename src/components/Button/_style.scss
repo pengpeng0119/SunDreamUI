@@ -38,6 +38,9 @@
 .btn-danger {
   @include button-style($danger, $danger, $white)
 }
+.btn-success{
+  @include button-style($success, $success, $white)
+}
 .btn-default {
   @include button-style($white, $gray-400, $body-color, $white, $primary, $primary)
 }

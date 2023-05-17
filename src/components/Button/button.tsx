@@ -9,7 +9,8 @@ export enum ButtonType{
   Primary='primary',
   Default='default',
   Danger='danger',
-  Link='link'
+  Link='link',
+  Success='success'
 }
 
 interface BaseButtonProps{

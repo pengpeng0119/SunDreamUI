@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import classNames from 'classnames'
+import Icon from "../Icon/icon";
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
 export enum AlertType{
   Success='success',
   Info='info',
@@ -38,8 +41,9 @@ const Alert:React.FC<BaseAlertProps>=(props)=>{
       <div className={'alertDesc'}>{description}</div>
       {!!closable && (
         <span className={'closeBtn'} onClick={handleColse}>
-          {closeText ? closeText : 'x'}
+          {closeText ? closeText : <Icon icon='times'></Icon>}
         </span>
+        
       )}
     </div>
   ) : null
