@@ -1,8 +1,9 @@
 import React,{useState,createContext} from 'react'
 import classNames from 'classnames'
-import {MenuItemProps} from './menuitem'
+import MenuItem, {MenuItemProps} from './menuitem'
+import SubMenu from './subMenu'
 
-type MenuMode='horizontal'|'vertical'
+export type MenuMode='horizontal'|'vertical'
 type SelectCallback=(selectedIndex:string)=>void
 export interface MenuProps{
   defaultIndex?:string;
@@ -66,6 +67,27 @@ const Menu:React.FC<MenuProps>=(props)=>{
         {renderChildren()}
       </MenuContext.Provider>
     </ul>
+  )
+}
+
+// sb
+export  const ShowMenuH=(props:any)=>{
+  const {mode,onSelect}=props
+  return(
+    <>
+    <Menu defaultIndex={'1'}   defaultOpenSubMenus={['4']} mode={mode} onSelect={onSelect}>
+        <MenuItem  disabled>cool link 1</MenuItem>
+        <MenuItem >cool link 2</MenuItem>
+        <MenuItem >cool link 3</MenuItem>
+        <MenuItem >cool link 4</MenuItem>
+        <SubMenu title='dropdown'>
+          <MenuItem>1MenuItem</MenuItem>
+          <MenuItem>2MenuItem</MenuItem>
+          <MenuItem>3MenuItem</MenuItem>
+        </SubMenu>
+    </Menu>
+    <div style={{height:'100px'}}></div>
+    </>
   )
 }
 Menu.defaultProps={

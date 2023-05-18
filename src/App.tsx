@@ -1,49 +1,128 @@
 import React, { memo, useState } from 'react'
 import Button, { ButtonSize, ButtonType } from './components/Button/button'
-import Alert, { AlertType } from './components/Alert/alert';
-import Switch, { SwitchType } from './components/Switch/switch';
+import Alert, { AlertType } from './components/Alert/alert'
+import Switch, { SwitchType } from './components/Switch/switch'
 
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fas } from '@fortawesome/free-solid-svg-icons'
 
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { fas } from '@fortawesome/free-solid-svg-icons';
-
-import Icon from './components/Icon/icon';
-import Menu from './components/Menu/menu';
-import MenuItem from './components/Menu/menuitem';
-import SubMenu from './components/Menu/subMenu';
+import Icon from './components/Icon/icon'
+import Menu from './components/Menu/menu'
+import MenuItem from './components/Menu/menuitem'
+import SubMenu from './components/Menu/subMenu'
+import { Input } from './components/Input/input'
+import {
+  AutoComplete,
+  DataSourceType
+} from './components/AutoComplete/autoComplete'
+import { any } from 'prop-types'
+import Progress from './components/Progress/progress'
+import Upload, { UploadFile } from './components/Upload/upload'
+import Page from './components/Page/page'
 library.add(fas)
+interface LakerPlayerProps {
+  value: string
+  number: number
+}
 const App = memo(() => {
-  const [visible, setVisible] = useState(false);
+  const [val, setVal] = useState(10)
+  const [visible, setVisible] = useState(false)
+
+  const lakersWithNumber = [
+    { value: 'bradley', number: 11 },
+    { value: 'pope', number: 1 },
+    { value: 'caruso', number: 4 },
+    { value: 'cook', number: 2 },
+    { value: 'cousins', number: 15 },
+    { value: 'james', number: 23 },
+    { value: 'AD', number: 3 },
+    { value: 'green', number: 14 },
+    { value: 'howard', number: 39 },
+    { value: 'kuzma', number: 0 }
+  ]
+  // const handleFetch=(query:string)=>{
+  //   return lakersWithNumber.filter(player => player.value.includes(query))
+  // }
+  const handleFetch = (query: string) => {
+    return fetch(`https://api.github.com/search/users?q=${query}`)
+      .then((res) => res.json())
+      .then(({ items }) => {
+        console.log(items)
+        if (!items) {
+          return []
+        }
+        if (items.length < 10) {
+          return items
+            .slice(0, items.length)
+            .map((item: any) => ({ value: item.login, ...item }))
+        }
+        return items
+          .slice(0, 10)
+          .map((item: any) => ({ value: item.login, ...item }))
+      })
+  }
+  const renderOption = (item: any) => {
+    return (
+      <>
+        {/* <li>Name:{item.value}</li> */}
+        Url:{item.url}
+      </>
+    )
+  }
+  const check = (file: File) => {
+    // if(Math.round(file.size/1024)>50){
+    //   alert('file too big')
+    //   return false
+    // }
+    return true
+  }
+  const defaultFileList: UploadFile[] = [
+    {
+      uid: '123',
+      size: 1234,
+      name: 'hello.md',
+      status: 'uploading',
+      percent: 30
+    },
+    { uid: '122', size: 1234, name: 'xyz.md', status: 'success', percent: 30 },
+    { uid: '121', size: 1234, name: 'eyiha.md', status: 'error', percent: 30 }
+  ]
   return (
     <div>
-      <a href="www.baidu.com">111111</a>
-      <h1>hello world</h1>
-      <h2>hello world</h2>
-      <h4>hello world</h4>
-      <h5>111</h5>
-      <div style={{width:'200px'}}>
-        <Alert message="温馨提示,你注册成功" type={AlertType.Waring}  closable/>
-      </div>  
-      
-      <Alert message="注册成功" description="你在本网站已经注册成功,谢谢您的支持和反馈,多交流真正的技术吧" closable type="success" onClose={()=>{alert(123)}}/>
-      <Button btnType={ButtonType.Primary} onClick={e=>{alert(123)}}  rounded size={ButtonSize.large}>click me</Button> 
-      <Menu defaultIndex={'0'}   defaultOpenSubMenus={['4']} mode='vertical'>
-        <MenuItem  disabled>cool link 1</MenuItem>
-        <MenuItem >cool link 2</MenuItem>
-        <MenuItem >cool link 3</MenuItem>
-        <MenuItem >cool link 4</MenuItem>
-        <SubMenu title='dropdown'>
-          <MenuItem>1MenuItem</MenuItem>
-          <MenuItem>2MenuItem</MenuItem>
-          <MenuItem>3MenuItem</MenuItem>
-        </SubMenu>
-      </Menu>
-      <Icon icon='user-secret' size='10x' theme='dark'/>
-      <Switch checked={visible} onChange={setVisible} switchType={SwitchType.Success}></Switch>
+      <AutoComplete
+        fetchSuggestion={handleFetch}
+        onSelect={(i) => {
+          console.log('first', i)
+        }}
+        renderOption={renderOption}
+      />
+      <Progress percent={val}></Progress>
+      <Button onClick={(e) => setVal(val + 10)}>+10</Button>
+      <Progress
+        percent={val}
+        themeColor="#6699FF"
+        statusScope={[
+          [18, 'red'],
+          [40, 'orange']
+        ]}
+      />
+      <Upload
+        action="https://jsonplaceholder.typicode.com/posts/"
+        beforeUpload={check}
+        defaultFileList={defaultFileList}
+        name="fileName"
+        data={{ key: 'value' }}
+        accept={'png'}
+        multiple
+        drag
+      >
+        <Icon icon="upload" size="5x" theme="secondary" />
+        <br />
+        <p>Drag file over to upload</p>
+      </Upload>
+      <Page pageCallbackFn={(i) => console.log('page', i)}></Page>
     </div>
   )
 })
 
 export default App
-
-

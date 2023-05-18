@@ -4,12 +4,12 @@ import type { Meta, StoryObj } from '@storybook/react';
 import '../styles/index.scss';
 import  Button, { ButtonType }  from '../components/Button/button';
 import {action} from '@storybook/addon-actions'
-import { useState } from 'react';
+// import { render } from '@testing-library/react';
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta = {
   title: 'Example/Button',
   component: Button,
-  tags: ['autodocs'],
+  tags: ['autodocs']
 } satisfies Meta<typeof Button>;
 
 export default meta;
@@ -20,9 +20,9 @@ export  const DefaultButton: Story = {
   args: {
     children:'Default',
     onClick:()=>{alert(123);action('1');},
-
+    btnType:ButtonType.Default
   },
-  name:'主按钮'
+  name:'主按钮',
 };
 export  const PrimaryButton: Story = {
   args: {
@@ -67,11 +67,16 @@ export  const RoundedButton: Story = {
   },
 };
 export  const EllipseButton: Story = {
+  render:(args)=>(
+    <Button {...args}>EllipseButton</Button>
+  ),
   args: {
-    children: 'Disabled',
+    // children: 'Disabled',
     ellipse:true
   },
 };
+
+
 
 
 

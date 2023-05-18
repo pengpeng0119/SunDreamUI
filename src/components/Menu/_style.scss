@@ -62,7 +62,7 @@
       transition: $menu-transition;
       color: $body-color;
       &.is-active, &:hover {
-        color: $menu-item-active-color !important;
+        color: $menu-item-active-color ;
       }
     }
   }
@@ -96,4 +96,4 @@
       border-left: $menu-item-active-border-width solid $menu-item-active-color;
     }
   }
-}
+} 

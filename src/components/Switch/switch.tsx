@@ -14,7 +14,7 @@ export interface IButton {
     switchType?:SwitchType
 }
 
-export default function Switch(props: IButton) {
+ function Switch(props: IButton) {
     const { checked, onChange, disabled = false,switchType=SwitchType.Primary } = props;
     return (
         <div
@@ -32,4 +32,5 @@ export default function Switch(props: IButton) {
         </div>
     )
 }
+export default Switch
 
