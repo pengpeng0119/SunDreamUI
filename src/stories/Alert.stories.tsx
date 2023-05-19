@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import '../styles/index.scss';
-import {action} from '@storybook/addon-actions'
 import Alert, { AlertType } from '../components/Alert/alert';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';

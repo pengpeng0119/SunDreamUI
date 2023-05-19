@@ -18,7 +18,9 @@ var SubMenu = function (_a) {
     var index = _a.index, title = _a.title, children = _a.children, className = _a.className;
     var context = useContext(MenuContext);
     var openedSubMenus = context.defaultOpenSubMenus;
-    var isOpend = (index && context.mode === 'vertical') ? openedSubMenus.includes(index) : false;
+    var isOpend = index && context.mode === 'vertical'
+        ? openedSubMenus.includes(index)
+        : false;
     var _b = useState(isOpend), menuOpen = _b[0], setOpen = _b[1];
     var classes = classNames('menu-item submenu-item', className, {
         'is-active': context.index === index,
@@ -37,13 +39,21 @@ var SubMenu = function (_a) {
             setOpen(toggle);
         }, 200);
     };
-    var clickEvents = context.mode === 'vertical' ? {
-        onClick: handleClick
-    } : {};
-    var hoverEvents = context.mode !== 'vertical' ? {
-        onMouseEnter: function (e) { handleMouse(e, true); },
-        onMouseLeave: function (e) { handleMouse(e, false); }
-    } : {};
+    var clickEvents = context.mode === 'vertical'
+        ? {
+            onClick: handleClick
+        }
+        : {};
+    var hoverEvents = context.mode !== 'vertical'
+        ? {
+            onMouseEnter: function (e) {
+                handleMouse(e, true);
+            },
+            onMouseLeave: function (e) {
+                handleMouse(e, false);
+            }
+        }
+        : {};
     var renderChildren = function () {
         var subMenuClasses = classNames('viking-submenu', {
             'menu-opened': menuOpen
@@ -56,12 +66,12 @@ var SubMenu = function (_a) {
                 });
             }
             else {
-                console.error("Warning:SubMenu has a child which is not a MenuItem");
+                console.error('Warning:SubMenu has a child which is not a MenuItem');
             }
         });
-        return (_jsx("ul", __assign({ className: subMenuClasses }, { children: childrenComponent })));
+        return _jsx("ul", __assign({ className: subMenuClasses }, { children: childrenComponent }));
     };
-    return (_jsxs("li", __assign({ className: classes }, hoverEvents, { children: [_jsxs("div", __assign({ className: 'submenu-title' }, clickEvents, { children: [title, _jsx(Icon, { icon: 'angle-down', className: 'arrow-icon' })] })), renderChildren()] }), index));
+    return (_jsxs("li", __assign({ className: classes }, hoverEvents, { children: [_jsxs("div", __assign({ className: "submenu-title" }, clickEvents, { children: [title, _jsx(Icon, { icon: "angle-down", className: "arrow-icon" })] })), renderChildren()] }), index));
 };
 SubMenu.displayName = 'SubMenu';
 export default SubMenu;

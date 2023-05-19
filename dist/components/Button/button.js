@@ -41,7 +41,7 @@ var Button = function (props) {
     var classes = classNames('btn', className, (_a = {},
         _a["btn-".concat(btnType)] = btnType,
         _a["btn-".concat(size)] = size,
-        _a['disabled'] = (btnType === ButtonType.Link) && disabled,
+        _a.disabled = btnType === ButtonType.Link && disabled,
         _a['btn-ellipse'] = ellipse,
         _a['btn-rounded'] = rounded,
         _a));

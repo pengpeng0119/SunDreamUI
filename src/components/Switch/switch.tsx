@@ -12,18 +12,20 @@ export interface IButton {
 const SdSwitch: FC<IButton> = props => {
   const { checked, onChange, disabled = false, switchType = 'primary' } = props
   return (
-    <div
-      onClick={() => {
-        if (!disabled) {
-          onChange(!checked)
-        }
-      }}
-      className={classnames('dumbo-switch', [`switch-style-${switchType}`], {
-        'dumbo-switch--default': !checked,
-        'dumbo-switch--checked': checked,
-        'dumbo-switch--disabled': disabled
-      })}
-    ></div>
+    <>
+      <div
+        onClick={() => {
+          if (!disabled) {
+            onChange(!checked)
+          }
+        }}
+        className={classnames('dumbo-switch', `switch-style-${switchType}`, {
+          'dumbo-switch--default': !checked,
+          'dumbo-switch--checked': checked,
+          'dumbo-switch--disabled': disabled
+        })}
+      ></div>
+    </>
   )
 }
 export default SdSwitch

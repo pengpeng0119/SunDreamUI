@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 export declare enum AlertType {
     Success = "success",
     Info = "info",

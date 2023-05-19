@@ -10,9 +10,9 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
-import { useState } from "react";
+import { useState } from 'react';
 import classNames from 'classnames';
-import Icon from "../Icon/icon";
+import Icon from '../Icon/icon';
 export var AlertType;
 (function (AlertType) {
     AlertType["Success"] = "success";
@@ -31,6 +31,6 @@ var Alert = function (props) {
         setVisible(false);
         onClose && onClose();
     };
-    return visible ? (_jsxs("div", __assign({ className: classes, style: __assign({ opacity: visible ? '1' : '0' }, style) }, { children: [_jsx("div", __assign({ className: 'alertMes' }, { children: message })), _jsx("div", __assign({ className: 'alertDesc' }, { children: description })), !!closable && (_jsx("span", __assign({ className: 'closeBtn', onClick: handleColse }, { children: closeText ? closeText : _jsx(Icon, { icon: 'times' }) })))] }))) : null;
+    return visible ? (_jsxs("div", __assign({ className: classes, style: __assign({ opacity: visible ? '1' : '0' }, style) }, { children: [_jsx("div", __assign({ className: 'alertMes' }, { children: message })), _jsx("div", __assign({ className: 'alertDesc' }, { children: description })), !!closable && (_jsx("span", __assign({ className: 'closeBtn', onClick: handleColse }, { children: closeText ? closeText : _jsx(Icon, { icon: "times" }) })))] }))) : null;
 };
 export default Alert;

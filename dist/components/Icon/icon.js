@@ -30,6 +30,6 @@ var Icon = function (props) {
     var classes = classNames('viking-icon', className, (_a = {},
         _a["icon-".concat(theme)] = theme,
         _a));
-    return (_jsx(FontAwesomeIcon, __assign({ className: classes }, restProps)));
+    return _jsx(FontAwesomeIcon, __assign({ className: classes }, restProps));
 };
 export default Icon;

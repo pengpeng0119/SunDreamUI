@@ -1,15 +1,14 @@
-import { Meta } from '@storybook/blocks';
-import Code from './assets/code-brackets.svg';
-import Colors from './assets/colors.svg';
-import Comments from './assets/comments.svg';
-import Direction from './assets/direction.svg';
-import Flow from './assets/flow.svg';
-import Plugin from './assets/plugin.svg';
-import Repo from './assets/repo.svg';
-import StackAlt from './assets/stackalt.svg';
+import { Meta } from '@storybook/blocks'
+import Code from './assets/code-brackets.svg'
+import Colors from './assets/colors.svg'
+import Comments from './assets/comments.svg'
+import Direction from './assets/direction.svg'
+import Flow from './assets/flow.svg'
+import Plugin from './assets/plugin.svg'
+import Repo from './assets/repo.svg'
+import StackAlt from './assets/stackalt.svg'
 
 <Meta title="Example/Introduction" />
-
 <style>
   {`
     .subheading {
@@ -124,8 +123,17 @@ import StackAlt from './assets/stackalt.svg';
 
 ### 我非常建议你自己动手来查看组件效果,而不是去查看冗长的文字文档
 
-<div className="subheading">Configure</div>
 
+
+### 安装 npm install sun-dream-ui
+### 在index.ts引入css : import 'sun-dream-ui/dist/index.css'
+按需引入示例 :
+~~~js
+  impor {Button} from 'sun-dream-ui' 
+~~~
+{/* ### 按需引入示例 : impor {Button} from 'sun-dream-ui' */}
+
+{/* <div className="subheading">Configure</div>
 <div className="link-list">
   <a
     className="link-item"
@@ -172,9 +180,7 @@ import StackAlt from './assets/stackalt.svg';
     </span>
   </a>
 </div>
-
 <div className="subheading">Learn</div>
-
 <div className="link-list">
   <a className="link-item" href="https://storybook.js.org/docs" target="_blank">
     <img src={Repo} alt="repo" />
@@ -183,14 +189,22 @@ import StackAlt from './assets/stackalt.svg';
       Configure, customize, and extend
     </span>
   </a>
-  <a className="link-item" href="https://storybook.js.org/tutorials/" target="_blank">
+  <a
+    className="link-item"
+    href="https://storybook.js.org/tutorials/"
+    target="_blank"
+  >
     <img src={Direction} alt="direction" />
     <span>
       <strong>In-depth guides</strong>
       Best practices from leading teams
     </span>
   </a>
-  <a className="link-item" href="https://github.com/storybookjs/storybook" target="_blank">
+  <a
+    className="link-item"
+    href="https://github.com/storybookjs/storybook"
+    target="_blank"
+  >
     <img src={Code} alt="code" />
     <span>
       <strong>GitHub project</strong>
@@ -205,8 +219,7 @@ import StackAlt from './assets/stackalt.svg';
     </span>
   </a>
 </div>
-
 <div className="tip-wrapper">
   <span className="tip">Tip</span>Edit the Markdown in{' '}
   <code>stories/Introduction.stories.mdx</code>
-</div>
+</div> */}

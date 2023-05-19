@@ -22,14 +22,19 @@ function checkStatus(scope, val, defaultColor) {
         return val < scope[0][0] ? scope[0][1] : defaultColor;
     }
     else if (scope.length === 2) {
-        return val < scope[0][0] ? scope[0][1]
-            : scope[0][0] < val && val < scope[1][0] ? scope[1][1]
+        return val < scope[0][0]
+            ? scope[0][1]
+            : scope[0][0] < val && val < scope[1][0]
+                ? scope[1][1]
                 : defaultColor;
     }
     else if (scope.length === 3) {
-        return val < scope[0][0] ? scope[0][1]
-            : scope[0][0] < val && val < scope[1][0] ? scope[1][1]
-                : scope[1][0] < val && val < scope[2][0] ? scope[2][1]
+        return val < scope[0][0]
+            ? scope[0][1]
+            : scope[0][0] < val && val < scope[1][0]
+                ? scope[1][1]
+                : scope[1][0] < val && val < scope[2][0]
+                    ? scope[2][1]
                     : defaultColor;
     }
 }
@@ -49,11 +54,15 @@ var Progress = function (props) {
             setProgressPercent(percent);
         }
     }, [percent]);
-    return (+progressPercent === 100 && autoHidden ?
-        null :
-        _jsxs("div", __assign({ className: 'progressWrap' }, { children: [_jsx("div", __assign({ className: 'progressBar', style: { width: typeof width === 'number' ? width + 'px' : width, height: typeof height === 'number' ? height + 'px' : height } }, { children: _jsx("div", __assign({ className: 'progressInnerBar', style: {
-                            width: "".concat(progressPercent, "%"),
-                            backgroundColor: statusScope && statusScope.length ? checkStatus(statusScope, percent, themeColor) : themeColor
-                        } }, { children: showInnerText && _jsx("span", __assign({ className: "inner-text" }, { children: "".concat(progressPercent, "%") })) })) })), showOuterText && (!hiddenText && _jsx("span", __assign({ className: 'progressText', style: { color: textColor } }, { children: progressPercent + '%' })))] })));
+    return +progressPercent === 100 && autoHidden ? null : (_jsxs("div", __assign({ className: 'progressWrap' }, { children: [_jsx("div", __assign({ className: 'progressBar', style: {
+                    width: typeof width === 'number' ? width + 'px' : width,
+                    height: typeof height === 'number' ? height + 'px' : height
+                } }, { children: _jsx("div", __assign({ className: 'progressInnerBar', style: {
+                        width: "".concat(progressPercent, "%"),
+                        backgroundColor: statusScope && statusScope.length
+                            ? checkStatus(statusScope, percent, themeColor)
+                            : themeColor
+                    } }, { children: showInnerText && (_jsx("span", __assign({ className: "inner-text" }, { children: "".concat(progressPercent, "%") }))) })) })), showOuterText &&
+                !hiddenText && (_jsx("span", __assign({ className: 'progressText', style: { color: textColor } }, { children: progressPercent + '%' })))] })));
 };
 export default Progress;

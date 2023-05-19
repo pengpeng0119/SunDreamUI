@@ -1,6 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta } from '@storybook/react';
 import '../styles/index.scss';
-import {action} from '@storybook/addon-actions'
 import Icon from '../components/Icon/icon';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
@@ -12,7 +11,6 @@ const meta = {
 } satisfies Meta<typeof Icon>;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
 
 export  const DefaultIcon = {
   args: {

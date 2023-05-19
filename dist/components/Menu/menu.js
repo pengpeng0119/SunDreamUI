@@ -19,7 +19,7 @@ var Menu = function (props) {
     var className = props.className, mode = props.mode, style = props.style, onSelect = props.onSelect, children = props.children, defaultIndex = props.defaultIndex, defaultOpenSubMenus = props.defaultOpenSubMenus;
     var classes = classNames('viking-menu', className, {
         'menu-vertical': mode === 'vertical',
-        'menu-horizontal': mode != 'vertical'
+        'menu-horizontal': mode !== 'vertical'
     });
     var _a = useState(defaultIndex), currentActive = _a[0], setActive = _a[1];
     var handleClick = function (index) {
@@ -42,7 +42,7 @@ var Menu = function (props) {
                 return React.cloneElement(childElement, { index: index.toString() });
             }
             else {
-                console.error("Warning:Menu has a child which is not a MenuItem component");
+                console.error('Warning:Menu has a child which is not a MenuItem component');
             }
         });
     };
@@ -51,7 +51,7 @@ var Menu = function (props) {
 // sb
 export var ShowMenuH = function (props) {
     var mode = props.mode, onSelect = props.onSelect;
-    return (_jsxs(_Fragment, { children: [_jsxs(Menu, __assign({ defaultIndex: '1', defaultOpenSubMenus: ['4'], mode: mode, onSelect: onSelect }, { children: [_jsx(MenuItem, __assign({ disabled: true }, { children: "cool link 1" })), _jsx(MenuItem, { children: "cool link 2" }), _jsx(MenuItem, { children: "cool link 3" }), _jsx(MenuItem, { children: "cool link 4" }), _jsxs(SubMenu, __assign({ title: 'dropdown' }, { children: [_jsx(MenuItem, { children: "1MenuItem" }), _jsx(MenuItem, { children: "2MenuItem" }), _jsx(MenuItem, { children: "3MenuItem" })] }))] })), _jsx("div", { style: { height: '100px' } })] }));
+    return (_jsxs(_Fragment, { children: [_jsxs(Menu, __assign({ defaultIndex: '1', defaultOpenSubMenus: ['4'], mode: mode, onSelect: onSelect }, { children: [_jsx(MenuItem, __assign({ disabled: true }, { children: "cool link 1" })), _jsx(MenuItem, { children: "cool link 2" }), _jsx(MenuItem, { children: "cool link 3" }), _jsx(MenuItem, { children: "cool link 4" }), _jsxs(SubMenu, __assign({ title: "dropdown" }, { children: [_jsx(MenuItem, { children: "1MenuItem" }), _jsx(MenuItem, { children: "2MenuItem" }), _jsx(MenuItem, { children: "3MenuItem" })] }))] })), _jsx("div", { style: { height: '100px' } })] }));
 };
 Menu.defaultProps = {
     defaultIndex: '0',
