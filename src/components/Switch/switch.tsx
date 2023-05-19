@@ -1,36 +1,29 @@
-import React from 'react';
-import classnames from 'classnames';
+import classnames from 'classnames'
+import { FC } from 'react'
 
-export enum SwitchType{
-  Primary='primary',
-  Danger='danger',
-  Success='success',
-  Warning='warning'
-}
+export type SwitchType = 'primary' | 'danger' | 'success' | 'warning'
 export interface IButton {
-    checked: boolean;
-    onChange: (checked: boolean) => void;
-    disabled?: boolean;
-    switchType?:SwitchType
+  checked: boolean
+  onChange: (checked: boolean) => void
+  disabled?: boolean
+  switchType?: SwitchType
 }
 
- function Switch(props: IButton) {
-    const { checked, onChange, disabled = false,switchType=SwitchType.Primary } = props;
-    return (
-        <div
-            onClick={() => {
-                if (!disabled) {
-                    onChange(!checked)
-                }
-            }}
-            className={classnames("dumbo-switch",[`switch-style-${switchType}`], {
-                'dumbo-switch--default': !checked,
-                'dumbo-switch--checked': checked,
-                'dumbo-switch--disabled': disabled
-            })}>
-
-        </div>
-    )
+const SdSwitch: FC<IButton> = props => {
+  const { checked, onChange, disabled = false, switchType = 'primary' } = props
+  return (
+    <div
+      onClick={() => {
+        if (!disabled) {
+          onChange(!checked)
+        }
+      }}
+      className={classnames('dumbo-switch', [`switch-style-${switchType}`], {
+        'dumbo-switch--default': !checked,
+        'dumbo-switch--checked': checked,
+        'dumbo-switch--disabled': disabled
+      })}
+    ></div>
+  )
 }
-export default Switch
-
+export default SdSwitch

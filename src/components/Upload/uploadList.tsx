@@ -2,17 +2,19 @@ import { FC } from 'react'
 import { UploadFile } from './upload'
 import Icon from '../Icon/icon'
 import Progress from '../Progress/progress'
-
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+library.add(fas)
 export interface UploadListProps {
   fileList: UploadFile[]
   onRemove: (_file: UploadFile) => void
 }
-export const UploadList: FC<UploadListProps> = (props) => {
+export const UploadList: FC<UploadListProps> = props => {
   const { fileList, onRemove } = props
   // console.log(fileList[0].percent)
   return (
     <ul className="viking-upload-list">
-      {fileList.map((item) => {
+      {fileList.map(item => {
         return (
           <li className="viking-upload-list-item" key={item.uid}>
             <span className={`file-name file-name-${item.status}`}>
@@ -33,7 +35,7 @@ export const UploadList: FC<UploadListProps> = (props) => {
             <span className="file-actions">
               <Icon
                 icon="times"
-                onClick={(e) => {
+                onClick={e => {
                   e.stopPropagation()
                   onRemove(item)
                 }}
