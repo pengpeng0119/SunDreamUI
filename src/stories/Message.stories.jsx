@@ -21,7 +21,7 @@ export default meta
  * to learn how to use render functions.
  */
 const handleClick = () => {
-  api.success('我是全局提示组件')
+  api.warn('我是全局提示组件')
   // message.info('我是全局提示组件'); 其他提示类型都按照此方式即可。
   // message.info('我是全局提示组件'，4); 第二个参数为自定义时长。
 }

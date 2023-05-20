@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import ReactDOM from 'react-dom'
+import ReactDOM from 'react-dom/client'
 import Icon from '../Icon'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
+import classNames from 'classnames'
 
 library.add(fas)
 // import './style.less'
@@ -11,7 +12,11 @@ const div = document.createElement('div')
 document.body.appendChild(div)
 
 function notice(args) {
-  return ReactDOM.render(<Message {...args} />, div)
+  // const root = createRoot(document.getElementById("root"));
+  // return ReactDOM.render(<Message {...args} />, div)
+  // return div.render(<Message {...args} />)
+  const root2 = ReactDOM.createRoot(div)
+  root2.render(<Message {...args} />)
 }
 
 let timer
@@ -30,10 +35,10 @@ export function Message(props) {
     }
     if (type === 'warn') {
       return (
-        <Icon className={`message-content-icon`} icon={'engine-warning'}></Icon>
+        <Icon className={`message-content-icon`} icon={'radiation-alt'}></Icon>
       )
     }
-    if (type === 'error') {
+    if (type === 'danger') {
       return (
         <Icon
           className={`message-content-icon`}
@@ -42,7 +47,7 @@ export function Message(props) {
       )
     }
 
-    console.log('show', typeof type)
+    console.log('show', type)
   }
   useEffect(() => {
     setMsgs([...msgs, props])
@@ -66,12 +71,12 @@ export function Message(props) {
       )
     }
   }, [msgs])
-
+  const classes = classNames('message-content', { [`message-${type}`]: type })
   return (
     <div className="message">
       {msgs.map((item, index) => {
         return (
-          <div className="message-content" key={index}>
+          <div className={classes} key={index}>
             {showIcon()}
             <span className="message-content-text">{content}</span>
           </div>
@@ -91,14 +96,9 @@ let api = {
   warn: (content, duration = 3, type = 'warn') => {
     return notice({ content, duration, type })
   },
-  error: (content, duration = 3, type = 'error') => {
+  danger: (content, duration = 3, type = 'danger') => {
     return notice({ content, duration, type })
   }
 }
-// [('info', 'success', 'warn', 'error')].forEach(type => {
-//   api[type] = (content, duration = 3) => {
-//     return notice({ content, duration, type })
-//   }
-// })
 
 export default api

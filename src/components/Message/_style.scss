@@ -7,7 +7,7 @@
 
   &-content {
     max-width: 800px;
-    background: $primary;
+    
     padding: 13px 64px;
     border-radius: 6px;
     margin-top: 8px;
@@ -24,6 +24,18 @@
       margin-right: 8px;
       font-size: 20px;
     }
+  }
+  &-info{
+    background: $primary;
+  }
+  &-success{
+    background: $success;
+  }
+  &-warn{
+    background: $warning;
+  }
+  &-danger{
+    background: $danger;
   }
 }
 
