@@ -1,6 +1,5 @@
 import axios from 'axios'
 import { ChangeEvent, FC, useRef, useState } from 'react'
-import Button, { ButtonType } from '../Button/button'
 import { UploadList } from './uploadList'
 import { Dragger } from './dragger'
 export interface UploadProps {
@@ -34,7 +33,7 @@ export interface UploadFile {
 }
 
 // 组件
-const Upload: FC<UploadProps> = (props) => {
+const Upload: FC<UploadProps> = props => {
   const {
     action,
     defaultFileList,
@@ -71,20 +70,20 @@ const Upload: FC<UploadProps> = (props) => {
     }
   }
   const handleRemove = (file: UploadFile) => {
-    setFileList((preList) => {
-      return preList.filter((item) => item.uid !== file.uid)
+    setFileList(preList => {
+      return preList.filter(item => item.uid !== file.uid)
     })
     if (onRemove) onRemove(file)
   }
   const uploadFiles = (files: FileList) => {
     let postFiles = Array.from(files)
-    postFiles.forEach((file) => {
+    postFiles.forEach(file => {
       if (!beforeUpload) {
         post(file)
       } else {
         const result = beforeUpload(file)
         if (result && result instanceof Promise) {
-          result.then((processedFile) => {
+          result.then(processedFile => {
             post(processedFile)
           })
         } else if (result !== false) {
@@ -98,8 +97,8 @@ const Upload: FC<UploadProps> = (props) => {
     updateFile: UploadFile,
     updateObj: Partial<UploadFile>
   ) => {
-    setFileList((prevList) => {
-      return prevList.map((file) => {
+    setFileList(prevList => {
+      return prevList.map(file => {
         if (file.uid === updateFile.uid) {
           return { ...file, ...updateObj }
         } else {
@@ -118,13 +117,13 @@ const Upload: FC<UploadProps> = (props) => {
       raw: file
     }
     // setFileList([_file, ...fileList])
-    setFileList((preList) => {
+    setFileList(preList => {
       return [_file, ...preList]
     })
     const formData = new FormData()
     formData.append(name || 'file', file)
     if (data) {
-      Object.keys(data).forEach((key) => {
+      Object.keys(data).forEach(key => {
         formData.append(key, data[key])
       })
     }
@@ -143,7 +142,7 @@ const Upload: FC<UploadProps> = (props) => {
           }
         }
       })
-      .then((resp) => {
+      .then(resp => {
         console.log(resp)
         updateFileList(_file, { status: 'success', response: resp.data })
         if (onSuccess) {
@@ -153,7 +152,7 @@ const Upload: FC<UploadProps> = (props) => {
           onChange(file)
         }
       })
-      .catch((err) => {
+      .catch(err => {
         console.error(err)
         updateFileList(_file, { status: 'error', error: err })
         if (onError) {
@@ -173,7 +172,7 @@ const Upload: FC<UploadProps> = (props) => {
     >
       {drag ? (
         <Dragger
-          onFile={(files) => {
+          onFile={files => {
             uploadFiles(files)
           }}
         >

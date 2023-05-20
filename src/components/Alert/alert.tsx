@@ -1,26 +1,32 @@
-import React, { useState } from "react";
+import React, { useState } from 'react'
 import classNames from 'classnames'
-import Icon from "../Icon/icon";
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { fas } from '@fortawesome/free-solid-svg-icons';
-export enum AlertType{
-  Success='success',
-  Info='info',
-  Waring='warning',
-  Error='error'
+import Icon from '../Icon/icon'
+
+export enum AlertType {
+  Success = 'success',
+  Info = 'info',
+  Waring = 'warning',
+  Error = 'error'
 }
-interface BaseAlertProps{
-  style?:any,
-  closable?:boolean,
-  closeText?:string,
-  message?:string,
-  description?:string,
-  type?:string,
-  onClose?:(...args:any)=>any;
+interface BaseAlertProps {
+  style?: any
+  closable?: boolean
+  closeText?: string
+  message?: string
+  description?: string
+  type?: string
+  onClose?: (...args: any) => any
 }
-const Alert:React.FC<BaseAlertProps>=(props)=>{
-  const { style, closable, closeText, message, description, type, onClose } =
-  props
+const Alert: React.FC<BaseAlertProps> = props => {
+  const {
+    style,
+    closable,
+    closeText,
+    message,
+    description,
+    type,
+    onClose
+  } = props
   const classes = classNames('xAlertWrap', {
     [`alert-${type}`]: type
   })
@@ -41,9 +47,8 @@ const Alert:React.FC<BaseAlertProps>=(props)=>{
       <div className={'alertDesc'}>{description}</div>
       {!!closable && (
         <span className={'closeBtn'} onClick={handleColse}>
-          {closeText ? closeText : <Icon icon='times'></Icon>}
+          {closeText ? closeText : <Icon icon="times"></Icon>}
         </span>
-        
       )}
     </div>
   ) : null

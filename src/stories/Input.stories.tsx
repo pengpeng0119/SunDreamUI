@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import '../styles/index.scss';
-import Switch, { SwitchType } from '../components/Switch/switch';
 import { Input } from '../components/Input/input';
 
 const meta = {

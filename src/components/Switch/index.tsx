@@ -1,2 +1,2 @@
-import SdSwitch from './switch'
-export default SdSwitch
+import Switch from './St'
+export default Switch
